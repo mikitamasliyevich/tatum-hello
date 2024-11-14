@@ -1,23 +1,19 @@
 import { render } from 'preact';
-import { LocationProvider, Router, Route } from 'preact-iso';
+import { LocationProvider, Route } from 'preact-iso';
 
-import { Header } from './components/Header.jsx';
+import { Header } from './header/Header.js';
 import { Home } from './pages/Home/index.jsx';
-import { NotFound } from './pages/_404.jsx';
-import './style.css';
+import './index.css';
 
 export function App() {
-	return (
-		<LocationProvider>
-			{/*<Header />*/}
-			<main>
-				<Router>
-					<Route path="/" component={Home} />
-					<Route default component={NotFound} />
-				</Router>
-			</main>
-		</LocationProvider>
-	);
+  return (
+    <LocationProvider>
+      <Header />
+      <main class='flex flex-col items-center justify-center max-w-5xl mx-auto mt-20 sm:p-8'>
+        <Route path='/' component={Home} />
+      </main>
+    </LocationProvider>
+  );
 }
 
 render(<App />, document.getElementById('app'));
